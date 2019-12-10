@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+  remote_user: utx10101
+  become: yes
+  become_method: sudo
+  become_user: root
+  
+  tasks:
+    - name: Install TensorFlow on Arch Linux
+      shell: /usr/bin/pacman -Sy --noconfirm python-tensorflow
+    - name: Checking if all dependencies are met using pip & Verifying Installation
+      shell: /usr/bin/pip3 install tensorflow
+      ignore_errors: true
+    - shell: /usr/bin/python3 -c "import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+      register: shell_result
+    - debug:
+        var: shell_result
