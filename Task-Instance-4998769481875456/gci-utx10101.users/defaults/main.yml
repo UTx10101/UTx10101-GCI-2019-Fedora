@@ -1,0 +1,9 @@
+---
+# `Defaults` for Ansible-Role:Create-Users
+# userList:
+#   - name: utx-gci-2019                 (REQUIRED and Must be a vaild UNIX username)
+#     password: 1234                     (REQUIRED)
+#     shell: /bin/bash
+
+# list of users to add
+userList: []
