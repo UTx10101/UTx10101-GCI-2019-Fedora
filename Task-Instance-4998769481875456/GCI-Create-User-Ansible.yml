@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  remote_user: utx10101
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: "Create a New User"
+      user:
+        name: "{{ item.name }}"
+        groups: "{{ item.groups }}"
+        password: "{{ item.password | password_hash('sha512') }}"
+        comment: "ansible-{{ item.name }}"
+        shell: /bin/bash
+      with_items:
+         - { name: gci-2019, password: "1234", groups: "" }
