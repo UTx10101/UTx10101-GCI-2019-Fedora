@@ -1,29 +1,15 @@
 # Ansible-Role: To add a New User
-## Workflow of Ansible-Playbook:
-In the tasks section we have `"Create a New User"` it uses Ansible's `user` module to carry out the <br>
-process of adding new user.
-<br><br>
-The `"Create a New User"` task requires `{name,password,groups}` to create a new user.
-<br><br>
-These details are povided by following code:
-```
-      with_items:
-               - { name: gci-2019, password: "1234", groups: "" }
-```
+`gci-utx10101.users` is the folder for Ansible-Role<br>
+`GCI-Create-User-Ansible.yml` is a sample playbook to make use of above Ansible-Role
 ## To Add Users:
-For this you need to modify the above mentioned section of code `with_items:`.<br>
+For this you need to modify the vars section in `GCI-Create-User-Ansible.yml`.<br>
 You need to follow this pattern to add new entries:
-```
-      with_items:
-               - { name: user1, password: "pass1", groups: "group names or leave empty" }
-               - { name: user2, password: "pass2", groups: "group names or leave empty" }
-               - { name: user3, password: "pass3", groups: "group names or leave empty" }
-                 .
-                 .
-               - { name: userN, password: "passN", groups: "group names or leave empty" }
-```
-### Note:- Here, N is number of different users.
-## Steps to Run the Playbook:
+[See Entry Pattern Here](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/blob/master/Task-Instance-4998769481875456/gci-utx10101.users/defaults/main.yml)<br>
+An example is already present in `GCI-Create-User-Ansible.yml`.
+
+## Steps to Setup:
+(Keep The `gci-utx10101.users` as it is without any changes.)<br>
+Create a new playbook or modify existing one in the same directory as `gci-utx10101.users`:
 1. Some Usual Modifications:
    * Change `hosts: localhost` to `hosts: <hostname>` and remove `connection: local` if you don't want to run Playbook locally.
    * Change `remote_user: utx10101` to `remote_user: <your_current_logged_in_user>`.
@@ -32,4 +18,4 @@ You need to follow this pattern to add new entries:
 $ ansible-playbook -K GCI-Create-User-Ansible.yml
 ```
 Note:- `-K` Flag here will let you enter `BECOME password` which is your `sudo user password`.
-### This Playbook was created by UTx10101 to Complete a GCI-2019 task by Fedora : [Here](https://codein.withgoogle.com/dashboard/task-instances/4998769481875456/)
+### This Ansible-Role and Playbook was created by UTx10101 to Complete a GCI-2019 task by Fedora : [Here](https://codein.withgoogle.com/dashboard/task-instances/4998769481875456/)
