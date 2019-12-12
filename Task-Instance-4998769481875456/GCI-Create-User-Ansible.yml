@@ -5,13 +5,10 @@
   become: yes
   become_method: sudo
   become_user: root
-  tasks:
-    - name: "Create a New User"
-      user:
-        name: "{{ item.name }}"
-        groups: "{{ item.groups }}"
-        password: "{{ item.password | password_hash('sha512') }}"
-        comment: "ansible-{{ item.name }}"
+  roles:
+    - gci-utx10101.users
+  vars:
+    userList:
+      - username: gci-2019
+        password: "1234"
         shell: /bin/bash
-      with_items:
-         - { name: gci-2019, password: "1234", groups: "" }
