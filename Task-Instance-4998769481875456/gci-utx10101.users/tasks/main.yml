@@ -1,0 +1,8 @@
+---
+- name: "Adding user {{ item.username }} to the system"
+  user:
+    name: "{{ item.username }}"
+    comment: "Ansible-{{ item.username }}"
+    password: "{{ item.password | password_hash('sha512') }}"
+    shell: "{{ item.shell }}"
+  with_items: "{{ userList }}"
