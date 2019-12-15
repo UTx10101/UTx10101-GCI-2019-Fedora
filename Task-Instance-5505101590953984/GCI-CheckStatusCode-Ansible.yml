@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+  remote_user: utx10101  
+  tasks:
+    - name: Capture Status Code of `https://codein.withgoogle.com/`
+      uri:
+        url: "https://codein.withgoogle.com/"
+        follow_redirects: none
+        method: GET
+      register: res
+    - debug:
+        var: res.status
