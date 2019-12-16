@@ -4,10 +4,8 @@
   remote_user: utx10101  
   tasks:
     - name: Capture Status Code of `https://codein.withgoogle.com/`
-      uri:
-        url: "https://codein.withgoogle.com/"
-        follow_redirects: none
-        method: GET
-      register: res
+      capture_http_code:
+        url: https://codein.withgoogle.com/
+      register: result
     - debug:
-        var: res.status
+        var: result
