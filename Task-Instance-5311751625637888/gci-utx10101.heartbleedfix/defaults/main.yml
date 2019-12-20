@@ -1,0 +1,66 @@
+---
+# Examples:
+# keys:
+#   - name: mykey.key
+#     key: "mykeycontents"
+#   - name: mykey2.key
+#     cert: "mykey2contents"
+#     mode: "0664"
+#     owner: "www-data"
+#     group: "www-data"
+# certs:
+#   - name: mycert.crt
+#     cert: "mycertcontents"
+#   - name: mycert2.crt
+#     cert: "mycert2contents"
+#     mode: "0664"
+#     owner: "www-data"
+#     group: "www-data"
+# self_signed:
+#   - name: UTx10101.com
+#     subject:
+#        C: IN
+#        ST: MP
+#        L: GWL
+#        O: UTX Inc
+#        CN: UTx1010.org
+#        emailAddress: admin@UTx10101.org
+# openssl_config:
+#   default_bits: 2048
+#   countryName_default: IN
+#   stateOrProvinceName_default: MP
+#   localityName_default: GWL
+#   organizationName_default: 'UTx10101 Inc.'
+#   organizationalUnitName_default: 'UTxUnit-1'
+#   commonName_default: 'UTx10101.com'
+# openssl_config_template: templates/openssl.cnf.j2
+
+# keys to import
+keys: []
+path_to_keys: /etc/ssl/private
+default_key_owner: ssl-cert
+default_key_group: root
+
+# certificates to import
+certs: []
+path_to_certs: /etc/ssl/certs
+default_cert_owner: root
+default_cert_group: root
+
+# self signed certificates
+self_signed: []
+
+# default_config vars
+openssl_config: {}
+
+# config template to install
+openssl_config_template:
+
+# generate CSR for self_signed certificates
+generate_csr: no
+path_to_csrs: /etc/ssl/csrs
+
+import_cacert: no
+
+cacert_class_one_key_sha256: 'c0e0773a79dceb622ef6410577c19c1e177fb2eb9c623a49340de3c9f1de2560'
+cacert_class_three_key_sha256: 'f5badaa5da1cc05b110a9492455a2c2790d00c7175dcf3a7bcb5441af71bf84f'

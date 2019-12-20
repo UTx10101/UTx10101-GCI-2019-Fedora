@@ -1,0 +1,13 @@
+---
+- name: Update CA-certs
+  command: "{{ cacert_update_certs }}"
+
+- name: Restart Services
+  command: systemctl restart "{{ item }}"
+  register: rst
+  ignore_errors: True
+  changed_when:
+    - rst.rc == 5
+    - '"Failed" in rst.stderr'
+  with_items: "{{ services_to_restart }}"
+  

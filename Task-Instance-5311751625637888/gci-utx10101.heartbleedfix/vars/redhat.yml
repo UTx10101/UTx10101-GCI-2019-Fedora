@@ -1,0 +1,25 @@
+---
+packages:
+  - openssl
+  - python-openssl
+  - ca-certificates
+
+services_to_restart:
+  - nginx
+  - apache2
+  - postgresql
+  - php5-fpm
+  - openvpn
+  - postfix
+  - monit
+  - unbound
+
+pip_executable: /usr/bin/pip
+
+# Path to install certificate
+path_to_install_cacert_certificates: '/etc/pki/ca-trust/source/anchors/'
+
+cacert_update_certs: 'update-ca-trust'
+
+# Certificate pem path
+path_of_created_cacert_cert: '/etc/pki/ca-trust/extracted/'

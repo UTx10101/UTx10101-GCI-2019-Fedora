@@ -1,0 +1,36 @@
+galaxy_info:
+  role_name: gci-utx10101
+  author: UTx10101
+  description: Ansible-Role to Fix HeartBleed Vulnerability
+  license: MIT
+  min_ansible_version: 2.9.1
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: GenericUNIX
+      versions:
+        - all
+        - any
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: GenericLinux
+      versions:
+        - all
+        - any
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - system
+    - openssl
+    - heartbleedfix
+    - fix
+    - heartbleed
+    - fixheartbleed
+
+dependencies: []

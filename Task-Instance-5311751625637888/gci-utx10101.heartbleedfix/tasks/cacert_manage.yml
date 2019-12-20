@@ -1,0 +1,22 @@
+---
+- name: Create Dir for CA-Certificates
+  file:
+    path: "{{ path_to_install_cacert_certificates }}"
+    state: directory
+    recurse: yes
+    group: root
+    owner: root
+
+- name: Download CAcert-Class-1 PKI key
+  get_url:
+    dest: "{{ path_to_install_cacert_certificates }}"
+    url: http://www.cacert.org/certs/root.crt
+    sha256sum: "{{ cacert_class_one_key_sha256 }}"
+  notify: Update CA-certs
+
+- name: Download CAcert Class 3 PKI key
+  get_url:
+    dest: "{{ path_to_install_cacert_certificates }}"
+    url: http://www.cacert.org/certs/class3.crt
+    sha256sum: "{{ cacert_class_three_key_sha256 }}"
+  notify: Update CA-certs

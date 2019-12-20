@@ -1,0 +1,25 @@
+---
+packages:
+  - openssl
+  - python3-openssl
+  - ca-certificates
+
+services_to_restart:
+  - nginx
+  - apache2
+  - postgresql
+  - php5-fpm
+  - openvpn
+  - postfix
+  - monit
+  - unbound
+  
+pip_executable: /usr/bin/pip3
+
+# Path to install certificate
+path_to_install_cacert_certificates: '/usr/local/share/ca-certificates/cacert.org/'
+
+cacert_update_certs: 'update-ca-certificates'
+
+# Certificate pem path
+path_of_created_cacert_cert: '/etc/ssl/certs/cacert.org.pem'

@@ -1,0 +1,15 @@
+---
+
+- name: Checking if Dir Exists
+  stat:
+    path: "{{ item }}"
+  register: dir_stat
+
+- name: Creating Directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "{{ mode }}"
+  when: not dir_stat.stat.exists

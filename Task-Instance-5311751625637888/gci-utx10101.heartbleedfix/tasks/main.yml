@@ -1,0 +1,72 @@
+---
+- name: "Checking if Vulnerable"
+  shell: lsof -n | grep ssl | grep DEL | wc -l
+  register: res
+
+- block:
+    - name: "Safe"    
+      debug:
+        msg: "You are Safe"
+    - meta: end_play
+  when: not res.rc == 0
+
+- block:
+    - name: "Including Vars and Fixing Vulnerability"
+      include_vars: "{{ item }}"
+      with_first_found:
+        - "{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+        - "default.yml"
+    - name: "Installing Packages"
+      package:
+        name: "{{ packages }}"
+        state: present
+    - name: Creating Certs Dir
+      import_tasks: dir_handler.yml
+      vars:
+        item: "{{ path_to_certs }}"
+        mode: "0755"
+    - name: Creating Keys Dir
+      import_tasks: dir_handler.yml
+      vars:
+        item: "{{ path_to_keys }}"
+        mode: "0700"
+    - name: Creating CSRs Dir
+      import_tasks: dir_handler.yml
+      vars:
+        item: "{{ path_to_csrs }}"
+        mode: "0750"
+      when: generate_csr | bool
+    - name: Configuring
+      template:
+        src: "{{ openssl_config_template if openssl_config_template else 'etc/ssl/openssl.cnf.j2' }}"
+        dest: /etc/ssl/openssl.cnf
+        owner: root
+        group: root
+        mode: 0644
+    - import_tasks: manage.yml
+    - import_tasks: cacert_manage.yml
+      when: import_cacert | bool
+    - name: Restarting Services
+      command: echo "Restart"
+      notify: Restart Services
+  when: res.rc == 0
+
+- name: Final Checks
+  shell: lsof -n | grep ssl | grep DEL | wc -l
+  register: resu
+
+- block:
+    - name: "Unsafe"    
+      debug:
+        msg: "You are still Unsafe"
+    - meta: end_play
+  when: not resu.rc == 0
+
+- block:
+    - name: "Fixed"    
+      debug:
+        msg: "The Vulnerability Has Been Fixed"
+    - meta: end_play
+  when: resu.rc == 0
