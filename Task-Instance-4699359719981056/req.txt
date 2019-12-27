@@ -1,0 +1,15 @@
+There are 6 classes in the school.
+Each class has 4 periods every day
+Each school week consists of 5 days from Monday till Friday
+There are teachers.
+Each teacher can only teach one subject.
+Each class has 5 subjects. Maths, Physics, Chemistry, Biology and programming. Your program should:
+Ask for the number of teachers. (max 10)
+The subject they teach.
+Their amount of period they teach per month.
+Output the timetable for each class.
+Each subject must have equal amount of periods in a week. (but not interfere with other classes)
+Each class has 1 teacher for 1 subject.
+The teachers teaching periods can be higher than what is recommended.
+The dropped subjects that if a teacher has extra periods is desired NOT to be maths and physics since they are essential part of the education.
+Submit the .py file or the github repository.

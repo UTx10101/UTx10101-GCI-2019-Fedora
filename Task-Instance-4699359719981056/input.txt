@@ -1,0 +1,12 @@
+10
+A|maths|64
+B|maths|32
+C|physics|64
+D|physics|32
+E|chemistry|64
+F|chemistry|32
+G|biology|64
+H|biology|32
+I|programming|64
+J|programming|32
+

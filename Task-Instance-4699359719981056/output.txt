@@ -1,0 +1,33 @@
+
+ **Legend =>    Subjects > | Ma: maths | Ph: physics | Ch: chemistry | Bi: biology | Pr: programming |
+                Teachers > | A: A | B: B | C: C | D: D | E: E | F: F | G: G | H: H | I: I | J: J |
+
+ ###############################################################################################################
+|    Days   || Period ||  Class-1    ||   Class-2   ||   Class-3   ||   Class-4   ||   Class-5   ||   Class-6   |
+ ###############################################################################################################
+|           || P1     || Ma by A     || Ch by E     || Bi by G     || Pr by I     || Ma by B     || Ch by F     |
+| Monday    || P2     || Pr by I     || Ma by A     || Ch by E     || Bi by G     || Pr by J     || Ma by B     |
+|           || P3     || Bi by G     || Pr by I     || Ma by A     || Ch by E     || Bi by H     || Pr by J     |
+|           || P4     || Ch by E     || Bi by G     || Pr by I     || Ma by A     || Ch by F     || Bi by H     |
+ ###############################################################################################################
+|           || P1     || Ma by A     || Ch by E     || Pr by I     || Ph by C     || Ma by B     || Ch by F     |
+| Tuesday   || P2     || Ph by C     || Ma by A     || Ch by E     || Pr by I     || Ph by D     || Ma by B     |
+|           || P3     || Pr by I     || Ph by C     || Ma by A     || Ch by E     || Pr by J     || Ph by D     |
+|           || P4     || Ch by E     || Pr by I     || Ph by C     || Ma by A     || Ch by F     || Pr by J     |
+ ###############################################################################################################
+|           || P1     || Ma by A     || Ch by E     || Bi by G     || Ph by C     || Ma by B     || Ch by F     |
+| Wednesday || P2     || Ph by C     || Ma by A     || Ch by E     || Bi by G     || Ph by D     || Ma by B     |
+|           || P3     || Bi by G     || Ph by C     || Ma by A     || Ch by E     || Bi by H     || Ph by D     |
+|           || P4     || Ch by E     || Bi by G     || Ph by C     || Ma by A     || Ch by F     || Bi by H     |
+ ###############################################################################################################
+|           || P1     || Ma by A     || Bi by G     || Pr by I     || Ph by C     || Ma by B     || Bi by H     |
+| Thursday  || P2     || Ph by C     || Ma by A     || Bi by G     || Pr by I     || Ph by D     || Ma by B     |
+|           || P3     || Pr by I     || Ph by C     || Ma by A     || Bi by G     || Pr by J     || Ph by D     |
+|           || P4     || Bi by G     || Pr by I     || Ph by C     || Ma by A     || Bi by H     || Pr by J     |
+ ###############################################################################################################
+|           || P1     || Pr by I     || Ch by E     || Bi by G     || Ph by C     || Pr by J     || Ch by F     |
+| Friday    || P2     || Ph by C     || Pr by I     || Ch by E     || Bi by G     || Ph by D     || Pr by J     |
+|           || P3     || Bi by G     || Ph by C     || Pr by I     || Ch by E     || Bi by H     || Ph by D     |
+|           || P4     || Ch by E     || Bi by G     || Ph by C     || Pr by I     || Ch by F     || Bi by H     |
+ ###############################################################################################################
+
