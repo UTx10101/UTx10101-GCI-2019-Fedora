@@ -1,0 +1,15 @@
+{
+  "name": "newsapp-googleapi",
+  "version": "1.0.0",
+  "description": "A news app created to complete GCI-2019 task published by Fedora using GoogleNewsApi powered by NewsAPI.org",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "UTx10101",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}

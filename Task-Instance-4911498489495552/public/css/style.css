@@ -1,0 +1,183 @@
+body {
+	background-color: #f2f2f2;
+	margin: none;
+	font-family: 'Quicksand', sans-serif;
+}
+p {
+  color: #E64A19;
+  word-wrap: break-words;
+  text-align: justify;
+}
+.tablink {
+	background-color: white;
+	border:2px solid #ddd;
+	color: dodgerblue;
+	float: left;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 10px 10px;
+	margin: 5% 2% 2% 2%;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	font-size: 17px;
+	width:20%;
+	text-align: center;
+}
+.tabcontent {
+	border-radius: 20px;
+	margin: 2% 2% 2% 2%;
+	padding: 5px 50px 30px 50px;
+	color: Black;
+	display: none;
+	height: 100%;
+}
+.news-card-linux {
+	background-color: transparent;
+	width: 300px;
+	height: 200px;
+	border: 5px solid #6600cc;
+	border-radius: 25px;
+	display: inline-block;
+	perspective: 1000px;
+	flex: 0 0 auto;
+	margin-right: 20px;
+}
+.news-card-linux:hover .news-card-inner {
+	transform: rotateX(-180deg);
+}
+.news-card-open-source {
+	background-color: transparent;
+	width: 300px;
+	height: 200px;
+	border: 5px solid blue;
+	border-radius: 25px;
+	display: inline-block;
+	perspective: 1000px;
+	flex: 0 0 auto;
+	margin-right: 20px;
+}
+.news-card-open-source:hover .news-card-inner {
+	transform: rotateX(-180deg);
+}
+.news-card-android {
+	background-color: transparent;
+	width: 300px;
+	height: 200px;
+	border: 5px solid #a4c639;
+	border-radius: 25px;
+	display: inline-block;
+	perspective: 1000px;
+	flex: 0 0 auto;
+	margin-right: 20px;
+}
+.news-card-android:hover .news-card-inner {
+	transform: rotateX(-180deg);
+}
+.news-card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transition: transform 1s;
+	transform-style: preserve-3d;
+}
+.news-card-front, .news-card-back {
+	position: absolute;
+	width: 100%;
+	color: dodgerblue;
+	word-wrap: break-word;
+	height: 100%;
+	border: 2px solid #eb3a34;
+	border-radius: 20px;
+	backface-visibility: hidden;
+}
+.news-card-front {
+	background-color: white;
+}
+.news-card-back {
+	background-color: white;
+	transform: rotateX(180deg);
+}
+.news-card-wrapper-linux {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	height: 250px;
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+}
+.news-card-wrapper-linux::-webkit-scrollbar {
+	height: 10px;
+}
+.news-card-wrapper-linux::-webkit-scrollbar-track {
+	background : #fff;
+	border-radius: 10px;
+}
+.news-card-wrapper-linux::-webkit-scrollbar-thumb {
+	background : #6600cc;
+	border-radius: 10px;
+}
+.news-card-wrapper-open-source {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	height: 250px;
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+}
+.news-card-wrapper-open-source::-webkit-scrollbar {
+	height: 10px;
+}
+.news-card-wrapper-open-source::-webkit-scrollbar-track {
+	background : #fff;
+	border-radius: 10px;
+}
+.news-card-wrapper-open-source::-webkit-scrollbar-thumb {
+	background : blue;
+	border-radius: 10px;
+}
+.news-card-wrapper-android {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	height: 250px;
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+}
+.news-card-wrapper-android::-webkit-scrollbar {
+	height: 10px;
+}
+.news-card-wrapper-android::-webkit-scrollbar-track {
+	background : #fff;
+	border-radius: 10px;
+}
+.news-card-wrapper-android::-webkit-scrollbar-thumb {
+	background : #a4c639;
+	border-radius: 10px;
+}
+.card-desc {
+	width: 85%;
+	height: 80%;
+	position:absolute;
+	top: 0px;
+	text-align: justify;
+	padding: 2px 2px;
+	margin: 0px 0px 35px 25px;
+}
+.card-footer {
+	width: 90%;
+	height: 10%;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+}
+#nav {
+	position:absolute;
+	width: 96%;
+	margin: 0% 1% 0% 1%;
+	bottom: 0px;
+	text-align: center;
+}

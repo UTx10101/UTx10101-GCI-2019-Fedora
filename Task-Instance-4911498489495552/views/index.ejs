@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NewsApp - UTx10101</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext" rel="stylesheet" type="text/css"/>
+    <script>
+		async function showWin(name, elem, clr, txt) {
+			var i, tabcontent, tablinks, str="<h2>"+txt+"</h2><div class='news-card-wrapper-"+name+"'>";
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for(i=0;i<tabcontent.length;i++){
+				tabcontent[i].style.display="none";
+			}
+			tablinks = document.getElementsByClassName("tablink");
+			for(i=0;i<tablinks.length;i++){
+				tablinks[i].style.backgroundColor = "white";
+				tablinks[i].style.borderColor = "dodgerblue";
+				tablinks[i].style.color = "dodgerblue";
+			}
+			document.getElementById(name).style.display = "block";
+			if(name!='home'){
+				let res = await fetch('https://newsapi.org/v2/everything?q='+name+'&sortBy=publishedAt&language=en&pageSize=40&page=1&apiKey=849c73fae553413f8f49725642346d03');
+				let data = await res.json();
+				var artc = data['articles'];
+				//console.log(artc);
+				for(i=0;i<artc.length;i++){
+					str+="<a href='"+artc[i]['url']+"'><div class='news-card-"+name+"'><div class='news-card-inner'><div class='news-card-front' style='background-image: url(\""+artc[i]['urlToImage']+"\"); background-size: 175px 100px; background-repeat: no-repeat; background-position: bottom;'><h3>"+artc[i]['title']+"</h3></div><div class='news-card-back'><div class='card-desc'><p>";
+					if(artc[i]['description']!=null){
+						str+=artc[i]['description'];
+					}
+					str+="</p></div></div></div><div class='card-footer' style='color: "+clr+";'><h6>";
+					if(artc[i]['author']!=null){
+						str+="By:- "+artc[i]['author'];
+					}
+					if(artc[i]['source']['name']!=null){
+						str+="@"+artc[i]['source']['name'];
+					}
+					str+="</h6></div></div></a>";
+				}
+				document.getElementById(name).innerHTML=str+"</div>";
+			}
+			document.getElementById(name).style.backgroundColor = "white";
+			elem.style.backgroundColor = clr;
+			elem.style.borderColor = clr;
+			elem.style.color = "white";
+		}
+    </script>
+  </head>
+  <body onload="showWin('home',document.getElementById('btnHome'),'red','home')">
+    <div id="home" class="tabcontent">
+		<center>
+			<h1>Welcome to NewsApp Chief!</h1>
+			<h3>-: Great to Have you on Board :-</h3>		
+		</center>
+		<h3>Let's get started within 2 easy-peezy steps:-</h3>
+		<p>Step-1. Select a category from below and get latest news.
+		<br>Step-2. Hover over a news card title to read in brief and find if it's interesting.
+		<br>Step-3. Click on the news card which you want to read in detail.</p>
+		<center><h4>Wasn't that really simple! :-)</h4></center>
+		<center><h5>Powered by NewsAPI.org & Created by UTx10101</h5></center>
+    </div>
+    <div id="linux" class="tabcontent"></div>
+    <div id="open-source" class="tabcontent"></div>
+    <div id="android" class="tabcontent"></div>
+    <div id="nav">
+			<button class="tablink" onclick="showWin('home',this,'red','home')" id="btnHome">Home</button>
+			<button class="tablink" onclick="showWin('linux',this,'#6600cc','Linux: Fresh Updates')" id="btnLin">Linux</button>
+			<button class="tablink" onclick="showWin('open-source',this,'blue','Open Source: Fresh Updates')" id="btnOSS">Open Source</button>
+			<button class="tablink" onclick="showWin('android',this,'#a4c639','Android: Fresh Updates')" id="btnAndro">Android</button>
+	</div>
+  </body>
+</html>
