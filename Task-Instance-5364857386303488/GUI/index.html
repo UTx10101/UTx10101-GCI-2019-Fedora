@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Ultimate Maths Showdown</title>
+	<link href="css/style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext" rel="stylesheet" type="text/css"/>
+	<link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet"/>
+	<script type="text/javascript" src="/eel.js"></script>
+	<script type="text/javascript">
+		eel.expose(show_hide_elems);
+		function show_hide_elems(elems,val) {
+			var i;
+			if(val==1){
+				val="block";
+			}
+			else{
+				val="none";
+			}
+			for(i=0;i<elems.length;i++){
+				if(elems[i]=="home"){
+					document.getElementById("name-form").reset();
+				}
+				document.getElementById(elems[i]).style.display=val;
+			}
+		}
+		eel.expose(lock_unlock_elems);
+		function lock_unlock_elems(elems,val) {
+			var i;
+			if(val==1){
+				val=true;
+			}
+			else{
+				val=false;
+			}
+			for(i=0;i<elems.length;i++){
+				document.getElementById(elems[i]).disabled=val;
+			}
+		}
+		eel.expose(initTimer);
+		function initTimer(id,s){
+			var x = setInterval(function() {
+				var elem=document.getElementById(id);
+				elem.style="font-size: 4vw; width: 10vw; border-radius: 50%; background-color: dodgerblue;"
+				elem.innerHTML=s+"s";
+				s=s-1;
+				if(s<0){
+					clearInterval(x);
+					elem.style="font-size: 3vw; width: 20vw; border-radius: 20%; background-color: red;"
+					document.getElementById(id).innerHTML = "TIME OVER";
+					var an=getAns('ansA');
+					if(typeof an=='undefined'){
+						an=getAns('ansB');
+					}
+					eel.validate(an);
+				}
+			}, 1000);
+			document.getElementById('sub-A').addEventListener("click",function(){ clearInterval(x); });
+			document.getElementById('sub-B').addEventListener("click",function(){ clearInterval(x); });
+			document.getElementById('forfeit-A').addEventListener("click",function(){ clearInterval(x); });
+			document.getElementById('forfeit-B').addEventListener("click",function(){ clearInterval(x); });
+		}
+		eel.expose(setVal);
+		function setVal(ID,VAL,fl) {
+			if(fl==0){
+				document.getElementById(ID).innerHTML = VAL;
+			} else if(fl==1){
+				var i, x=document.getElementsByTagName('label');
+				for(i=0;i<x.length;i++){
+					if(x[i].getAttribute('for')==ID){
+						x[i].innerHTML = VAL;
+						break;
+					}
+				}
+			} else if(fl==2){
+				document.getElementById(ID).querySelector('h1').setAttribute('data-text',VAL)
+				document.getElementById(ID).querySelector('span').innerHTML = VAL;
+			}
+		}
+		function getAns(ID){
+			var i, elem;
+			for(i=1;i<5;i++){
+				elem = document.getElementById(ID+i);
+				if(elem.checked){
+					elem.checked=false;
+					return elem.value;
+				}
+			}
+		}
+	</script>
+</head>
+
+<body onload="eel.setupScenes()">
+	<section class="welcome_area clearfix" id="home">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-12 col-md">
+					<div class="welcome-heading">
+						<center>
+							<div style="position: fixed; top: 20%; left: 50%; right: 50%;">
+								<h1 data-text="Maths"><span>Maths</span></h1>
+								<br><br>
+								<h1 data-text="Showdown"><span>Showdown</span></h1>
+							</div>
+							<div style="position: fixed; top: 45%; left: 5%; right: 5%;">
+								<p>By:- UTx10101</p>
+							</div>
+						</center>
+					</div>
+					<div class="get-start-area">
+						<center>
+							<p>(-: Enter Your Team Names to Start :-)</p>
+							<form id="name-form">
+							<table width="100%" align="center">
+								<tr>
+									<td><p>TEAM: A</p></td>
+									<td></td>
+									<td width="20%"></td>
+									<td><p>TEAM: B</p></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><input type="text" id="nameA" class="form-control name" placeholder="Enter Team Name"/></td>
+									<td><input type="button" id="subA" class="submit" onclick="eel.updateGameReady(document.getElementById('nameA').value,'nameA')" value="Ready!"/></td>
+									<td width="20%"></td>
+									<td><input type="text" id="nameB" class="form-control name" placeholder="Enter Team Name"/></td>
+									<td><input type="button" id="subB" class="submit" onclick="eel.updateGameReady(document.getElementById('nameB').value,'nameB')" value="Ready!"/></td>
+								</tr>
+							</table>
+							</form>
+						</center>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="welcome_area clearfix" id="rules" style="display: none">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-12 col-md">
+					<center>
+						<div style="position: fixed; top: 10%; left: 50%; right: 50%;"><h1 data-text="Rules"><span>Rules</span></h1></div>
+						<div style="position: fixed; top: 20%; left: 5%; right: 5%; color: #f0f; font-size: 18px; text-align: justify">
+							WARNING+TIP| <br>
+							<font color="#0ff">&nbsp;&nbsp;&nbsp;&nbsp;There is no limit on number of Questions. To win always try to have more points than your opponent.<br></font>
+							1) Both the teams will have a separate answer panel on their respective sides<br>
+							<font color="#0ff">2) The Questions will appear in the center of the screen<br></font>
+							3) There will also be a timer &#9203; running below the question<br>
+							<font color="#0ff">4) Both the teams will have same time limit for each question<br></font>
+							5) The time limit depends on difficulty of questions and varies vastly &#128526;<br>
+							<font color="#0ff">6) There will be 10 levels of difficulty you start from lvl 1 and end at lvl 10<br></font>
+							7) &#11088; The team which first answers the question correctly get marks associated with the question &#11088;<br>
+							<font color="#0ff">8) &#11088; A wrong answer will fetch you a (-10) and (0) for not answering &#11088;<br></font>
+							9) At last the team with the higher points will recieve a surprise gift &#128540;<br>
+							<font color="#0ff">10) If you want to quit the match just click It's Too HaRd button on your side<br></font>
+						</div>
+						<div class="get-start-area">
+							<input type="button" id="ch_names" class="prev" onclick="eel.prevnext(-1)" value="&#9194; Change Names"/>
+							<input type="button" id="to_arena" class="next" onclick="eel.prevnext(1)" value="&#128074; Let's Rock and Roll"/>
+						</div>
+					</center>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="welcome_area clearfix" id="arena" style="display: none">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center" style="display: inline-block">
+				<div class="panel-left">
+					<div class="panel-bg"></div>
+					<div class="lcontent">
+						<div id="A_name"></div>
+						<div id="A_score" style="color: white; background-color: green"></div><br>
+						<div class="formA" style="margin: 1vw;">
+							<div>&nbsp;Select Answer</div>
+							<div>
+								<input id="ansA1" name="ans" value="A1" type="radio"/>
+								<label for="ansA1"></label>
+							</div>
+							<div>
+								<input id="ansA2" name="ans" value="A2" type="radio"/>
+								<label for="ansA2"></label>
+							</div>
+							<div>
+								<input id="ansA3" name="ans" value="A3" type="radio"/>
+								<label for="ansA3"></label>
+							</div>
+							<div>
+								<input id="ansA4" name="ans" value="A4" type="radio"/>
+								<label for="ansA4"></label>
+							</div><br>
+							<div>
+								<input type="button" id="sub-A" class="next" style="background-color: dodgerblue; border-radius: 24px" onclick="eel.validate(getAns('ansA'))" value="Submit Answer"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-lcover"></div>
+				<div class="panel-right">
+					<div class="panel-bg"></div>
+					<div class="rcontent">
+						<div id="B_name"></div>
+						<div id="B_score" style="color: #f0f; background-color: white"></div><br>
+						<div class="formB" style="margin: 1vw;">
+							<div>&nbsp;Select Answer</div>
+							<div>
+								<input id="ansB1" name="ans" value="B1" type="radio"/>
+								<label for="ansB1"></label>
+							</div>
+							<div>
+								<input id="ansB2" name="ans" value="B2" type="radio"/>
+								<label for="ansB2"></label>
+							</div>
+							<div>
+								<input id="ansB3" name="ans" value="B3" type="radio"/>
+								<label for="ansB3"></label>
+							</div>
+							<div>
+								<input id="ansB4" name="ans" value="B4" type="radio"/>
+								<label for="ansB4"></label>
+							</div><br>
+							<div>
+								<input type="button" id="sub-B" class="next" style="background-color: dodgerblue; border-radius: 24px" onclick="eel.validate(getAns('ansB'))" value="Submit Answer"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-rcover"></div>
+				<div class="panel-center">
+					<div class="d-flex justify-content-center">
+						<div id="LVL" class="next" style="min-width: 30vw; background-color: dodgerblue; border-radius: 0 0 50% 50%"></div>
+					</div>
+					<div class="d-flex justify-content-center">
+						<div id="ques" style="position: fixed; top: 30vh; word-wrap: break-word; text-align: justified; width: 50vw; height: 45vh"></div>
+					</div>
+					<div class="d-flex justify-content-center">
+						<div id="timer" class="container align-items-center"></div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="row h-100 align-items-center">
+				<div class="get-start-area">
+					<input type="button" id="forfeit-A" class="prev" onclick="eel.genResult(1)" value="&#127987; It's Too HaRd"/>
+					<input type="button" id="forfeit-B" class="next" onclick="eel.genResult(2)" value="It's Too HaRd &#127987;"/>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="welcome_area clearfix" id="results" style="display: none">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-12 col-md">
+					<center>
+						<div style="position: fixed; top: 6vh; left: 50%; right: 50%;"><h1 data-text="&#128081; Winner &#128081;"><span>&#128081; Winner &#128081;</span></h1></div>
+						<div id="winName" style="position: fixed; top: 20vh; left: 50%; right: 50%;"><h1 data-text=""><span></span></h1></div>
+						<div id="winScore" style="position: fixed; top: 35vh; left: 50%; right: 50%;"><h1 data-text=""><span></span></h1></div>
+						<div id="stats" style="position: fixed; left: 10vw; bottom: 25vh;"></div>
+						<div class="get-start-area">
+							<input type="button" id="new" class="prev" onclick="eel.prevnext(-1)" value="&#11088; New Game"/>
+							<input type="button" id="quit" class="next" onclick="eel.prevnext(1)" value="&#128561; Exit"/>
+						</div>
+					</center>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="welcome_area clearfix" id="surprise" style="display: none">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-12 col-md">
+					<center>
+						<div style="position: fixed; top: 10%; left: 50%; right: 50%;"><h1 data-text="But Wait!"><span>But Wait!</span></h1></div>
+						<div style="position: fixed; top: 25%; left: 50%; right: 50%;"><h1 data-text="I Forgot"><span>I Forgot</span></h1></div>
+						<div style="position: fixed; top: 35%; left: 50%; right: 50%;"><h1 data-text="your surprise"><span>your surprise</span></h1></div>
+						<div style="position: fixed; top: 50%; left: 50%; right: 50%;"><h1 data-text="Keep this until then"><span>Keep this until then</span></h1></div>
+						<div style="position: fixed; top: 70%; left: 50%; right: 50%; font-size:calc(50px + 5vw); text-shadow: 0 0 0.25em blue; filter: blur(0.01em);"><h1 data-text="&#x1F381;"><span>&#x1F381;</span></h1></div>
+						<div class="get-start-area">
+							<input type="button" id="quit" class="next" onclick="eel.prevnext(1); window.close()" value="Quit"/>
+						</div>
+					</center>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
