@@ -10,7 +10,7 @@ And it's done the game window will open and you can enjoy with your another frie
 ## How to Add more questions
 Open Game.py and on the top you can find a dict named quests just analyze what the fields mean and add your own questions.
 ## Here are some screenshots:
-![Main Screen](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/raw/master/README_Img/1.png)
-![Rules Screen](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/raw/master/README_Img/2.png)
-![Game Screen](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/raw/master/README_Img/3.png)
+![Main Screen](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/blob/master/Task-Instance-5364857386303488/README_Img/1.png)
+![Rules Screen](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/blob/master/Task-Instance-5364857386303488/README_Img/2.png)
+![Game Screen](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/blob/master/Task-Instance-5364857386303488/README_Img/3.png)
 ### By:- UTx10101
