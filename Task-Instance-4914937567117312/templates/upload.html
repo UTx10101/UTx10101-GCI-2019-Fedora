@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Upload Files</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	</head>
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row justify-content-center align-items-center h-100">
+				<div class="col-6 justify-content-center align-items-center">
+					<h1>Upload TXT Files Here<span style="font-size: 25vh;margin-left: 15vw">&#128516;</span></h1>
+					<a href="/"><span style="font-size: 25vh;margin-left: 15vw"><button class="btn btn-info btn-lg btn-inline">List Files</button></span></a>
+				</div>
+				<div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+					<form action="/upload" enctype="multipart/form-data" method="POST">
+						<div class="form-group">
+							{% for message in get_flashed_messages()%}
+							<small class="text-danger">{{ message }}</small>
+							{% endfor %}
+						</div>
+						<div class="form-group">
+							<label>Enter FileName To Save With New Name:</label>
+							<input _ngcontent-c0="" class="form-control form-control-lg" type="text" id="fname" name="fname" placeholder="New Name or Leave Blank">
+						</div>
+						<div class="form-group">
+							<label>Upload Text File</label>
+							<input class="form-control-file form-control-lg" type="file" id="txtfile" name="txtfile">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-info btn-lg btn-block">Upload</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

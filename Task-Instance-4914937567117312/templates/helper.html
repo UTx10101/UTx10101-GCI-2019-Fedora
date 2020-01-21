@@ -1,0 +1,16 @@
+{% if text[1]==2 %}
+<pre>
+{% for t in text[0] %}
+{{ t.strip() }}<br>
+{% endfor %}
+</pre>
+<div style="postion: fixed; bottom: 5vh"><center><a href='/'>Back To List</a></center></div>
+{% endif %}
+
+{% if text[1]==1 %}
+<center><h1 style="margin-top: 25vh">Successfully Deleted {{ text[0] }}</h1><br><br><a href='/'>Back To List</a></center>
+{% endif %}
+
+{% if text[1]==0 %}
+<center><h1 style="margin-top: 25vh">Failed to Delete {{ text[0] }}</h1><br><br><a href='/'>Back To List</a></center>
+{% endif %}
