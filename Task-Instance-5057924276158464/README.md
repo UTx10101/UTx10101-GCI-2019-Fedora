@@ -15,7 +15,9 @@ This program uses OpenCV and a Supervised Machine Learning Algorithm: K-NearestN
 8. Also you can preview the image by answering `Y` or `y` to next prompt.
 
 ## Screenshots:
-![Terminal]()
-![ImagePreview]()
+### Terminal:-
+![Terminal](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/blob/master/Task-Instance-5057924276158464/screenshot_Terminal.png)
+### ImagePreviev:- (As my screen is small the image couldn't be displayed accurately)
+![ImagePreview](https://github.com/UTx10101/UTx10101-GCI-2019-Fedora/blob/master/Task-Instance-5057924276158464/screenshot_ImagePreview.png)
 
 ### This app was created by UTx10101 to Complete a GCI-2019 task by Fedora : [Here](https://codein.withgoogle.com/dashboard/task-instances/5057924276158464/)
